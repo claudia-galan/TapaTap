@@ -1,0 +1,16 @@
+<div>
+  <p class="titol">TapaTap</p>
+  <ul>
+    <li *ngFor="let nota of notes; let i = index">
+      <a href="#" contenteditable>
+        <h2>{{ nota.titol }}</h2>
+        <p>{{ nota.text }}</p>
+      </a>
+    </li>
+  </ul>
+  <!-- <div class="contenidor">
+    <div class="requadre-taronja">
+      <p class="text-sota">Aconsegueix el teu</p>
+    </div>
+  </div> -->
+</div>
