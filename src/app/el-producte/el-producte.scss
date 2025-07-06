@@ -1,0 +1,144 @@
+:host {
+  display: block;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.product-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+// Hero Section
+.hero-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+
+  .hero-text {
+    flex: 1;
+    h1 {
+      font-size: 2.8rem;
+      color: #333;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+  }
+
+  .hero-image {
+    flex: 1;
+    img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+// Features Section
+.features-section {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .feature-item {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ff6600;
+    }
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Customization Section
+.customization-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+    .custom-image {
+        flex: 0 0 300px;
+        img {
+            width: 100%;
+        }
+    }
+
+    .custom-text {
+        flex: 1;
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+
+.cta-button {
+    background-color: #ff6600;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: #e65c00;
+    }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .hero-section, .customization-section {
+        flex-direction: column;
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}

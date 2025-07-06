@@ -1,56 +1,68 @@
-.header {
+// Contenidor principal de la capçalera
+.header-container {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 15px 30px; // Una mica més d'espai
+    background-color: rgba(0, 0, 0, 0.1); // Fons subtil per si es fa scroll
+    backdrop-filter: blur(5px); // Efecte vidre per a un toc modern
 }
 
+// Logo
 .logo {
-    width: 125px;
-    height: 125px;
+    width: 100px; // Mida una mica més ajustada per a la capçalera
+    height: 100px;
     background-size: cover;
-    display: inline-block;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Sombra suau
-    border-radius: 10px; // Opcional per un look més suavitzat
-}
-
-.sbt-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin-left: 10px;
-    text-transform: uppercase;
-    padding: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    position: relative;
+    border-radius: 10px;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 }
 
-.sbt-text-container {
+// Contenidor dels enllaços de navegació
+.nav-links {
     display: flex;
     align-items: center;
-    height: 100%;
-    margin-left: 1000px;
-    transform: translateY(-15px); /* puja els textos */
+    gap: 15px; // Espai entre botons
+    margin-left: auto; // Alinea els botons a la dreta
 }
 
+// Estil dels botons de navegació
+.nav-button {
+    display: inline-block;
+    padding: 10px 22px; // Mida continguda per a la capçalera
+    background-color: #ff6600; // Taronja corporatiu
+    color: white;
+    font-family: 'Quicksand', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    border-radius: 50px; // Forma de píndola
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 
-.sbt-text::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0%;
-    height: 2px;
-    background-color: #ff6600; /* color destacat */
-    transition: width 0.3s ease;
-  }
-  
-  .sbt-text:hover {
-    color: #ff6600; /* color canviat al passar el ratolí */
-  }
-  
-  .sbt-text:hover::after {
-    width: 100%; /* apareix la línia sota el text */
-  }
+    &:hover {
+        background-color: #e65c00; // Taronja més fosc
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    }
+}
+
+// Estil del botó quan la seva ruta està activa
+.nav-button.active {
+    background-color: #cc5200; // Un taronja encara més fosc per indicar activitat
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3); // Efecte "enfonsat"
+    transform: translateY(1px); // Simula que està premut
+
+    &:hover {
+      // Mantenim l'estat premut, sense canvis addicionals al hover
+      background-color: #cc5200;
+      transform: translateY(1px);
+    }
+}

@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Header } from "../header/header";
-import { Titols } from "../titols/titols";
 
 @Component({
   selector: 'app-home',
-  imports: [Header, Titols],
+  imports: [Header],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
 export class Home {
+  private router = inject(Router);
 
+  goToCompra(): void {
+    this.router.navigate(['/compra']);
+  }
 }

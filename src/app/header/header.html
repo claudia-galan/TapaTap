@@ -1,10 +1,14 @@
-<div class="header">
-  <img src="/imglogo.png" class="logo" />
-  <div class="sbt-text-container">
-    <span (click)="onClick('inici')" class="sbt-text">Inici</span>
-    <span (click)="onClick('historia')" class="sbt-text">Història</span>
-    <span (click)="onClick('producte')" class="sbt-text">Producte</span>
-    <span (click)="onClick('contacte')" class="sbt-text">Contacte</span>
-    <span (click)="onClick('compra')" class="sbt-text">Compra</span>
-  </div>
+<div class="header-container">
+  <img src="/imglogo.png" alt="Logo de Tapatap" class="logo" routerLink="/" />
+
+  <nav class="nav-links">
+    <!-- Generem els botons de navegació dinàmicament -->
+    <a *ngFor="let item of navItems"
+       [routerLink]="item.path"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+       class="nav-button">
+      {{ item.label }}
+    </a>
+  </nav>
 </div>
