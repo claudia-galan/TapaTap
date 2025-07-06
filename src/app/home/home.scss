@@ -1,6 +1,22 @@
+/* ✨ NOU: Keyframes per a l'animació de vibració ✨ */
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+}
+
+
 .background-container {
     background-image: url('/img3.jpg');
-    //filter: brightness(1) sepia(0.2) hue-rotate(-10deg) saturate(1.4) contrast(1.1);
     filter: sepia(0) contrast(0.7) brightness(1.05) saturate(1.1) hue-rotate(-10deg);
     background-size: cover;
     background-position: center;
@@ -27,10 +43,9 @@
     pointer-events: none;
 }
 
-// ✨ NOU: Contenidor per centrar títol i botó
 .content-center {
     text-align: center;
-    margin: auto; // Centra verticalment
+    margin: auto;
 }
 
 .titol {
@@ -44,9 +59,8 @@
     text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 
-// ✨ NOU: Estils per a la crida a l'acció
 .call-to-action {
-    background-color: #ff6600; // Taronja corporatiu
+    background-color: #ff6600;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -58,10 +72,12 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease;
     margin-top: 20px;
-
+    
+    /* ✨ CANVI: Apliquem l'animació al fer hover ✨ */
     &:hover {
-        background-color: #e65c00; // Un to més fosc al passar el ratolí
-        transform: translateY(-3px);
+        background-color: #e65c00;
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        // La següent línia crida la nostra animació
+        animation: wiggle 0.5s ease-in-out;
     }
 }
