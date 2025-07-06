@@ -1,0 +1,12 @@
+.historia-container {
+    background-color: rgb(255, 199, 94);
+    min-height: 100vh; /* Assegura que ocupa tota la pantalla */
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .historia-content {
+    max-width: 800px;
+    margin: 0 auto;
+    color: white; /* o negre, segons el contrast que vulguis */
+  }
