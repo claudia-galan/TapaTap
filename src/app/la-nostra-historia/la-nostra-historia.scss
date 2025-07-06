@@ -1,12 +1,134 @@
-.historia-container {
-    background-color: rgb(255, 199, 94);
-    min-height: 100vh; /* Assegura que ocupa tota la pantalla */
+:host {
+    display: block;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+// Contenidor principal de la pàgina per centrar el contingut
+.page-container {
+    max-width: 1300px;
+    margin: 2rem auto;
     padding: 2rem;
-    box-sizing: border-box;
-  }
-  
-  .historia-content {
-    max-width: 800px;
-    margin: 0 auto;
-    color: white; /* o negre, segons el contrast que vulguis */
-  }
+    font-family: 'Quicksand', sans-serif;
+}
+
+// Layout principal amb Flexbox
+.story-layout {
+    display: flex;
+    gap: 3rem; // Espai entre la columna d'imatges i la de text
+    align-items: flex-start; // Alinea els elements a la part superior
+}
+
+// Columna de les imatges (esquerra)
+.image-column {
+    flex: 0 0 40%; // Ocupa un 40% de l'ample i no creix
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; // Espai entre les imatges
+}
+
+// Estil per a cada imatge
+.story-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px; // ✨ CANTONADES RODONES ✨
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.03); // Efecte subtil al passar el ratolí
+    }
+}
+
+// Columna del text (dreta)
+.text-column {
+    flex: 1; // Ocupa la resta de l'espai disponible
+    color: #333;
+
+    h2 {
+        font-size: 2.8rem;
+        line-height: 1.2;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        color: #ff6600; // Color corporatiu per al títol principal
+    }
+
+    h3 {
+        font-size: 1.8rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #444;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.7; // Molt important per a la llegibilitat
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    strong {
+        font-weight: 700; // Més pes per a les paraules clau
+    }
+}
+
+// --- ✨ NOUS ESTILS PER AL BOTÓ ✨ ---
+.cta-button-container {
+    margin-top: 2.5rem; // Espai superior per separar-lo del text
+    text-align: left; // Alineat a l'esquerra per defecte
+}
+
+.call-to-action {
+    background-color: #ff6600; // Taronja corporatiu
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem; // Una mida adequada per a la pàgina
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #e65c00; // Un to més fosc al passar el ratolí
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+// --- RESPONSIVE DESIGN ---
+// Per a pantalles més petites (tauletes i mòbils)
+@media (max-width: 992px) {
+    .story-layout {
+        flex-direction: column; // Apilem les columnes una sobre l'altra
+    }
+
+    .image-column {
+        flex: 1 1 auto; // Permet que ocupi tot l'ample
+        width: 100%;
+        // En mòbil, podríem mostrar les imatges en horitzontal
+        flex-direction: row; 
+        overflow-x: auto; // Per si no caben totes
+        padding-bottom: 1rem; // Espai per a la barra de scroll si apareix
+    }
+
+    .text-column {
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.6rem; }
+    }
+
+    // Centrem el botó en dispositius mòbils
+    .cta-button-container {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .image-column {
+        flex-direction: column; // En pantalles molt petites, tornem a apilar-les
+    }
+}

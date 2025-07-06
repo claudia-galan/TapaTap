@@ -1,8 +1,9 @@
 :host {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f4f4f4;
+    padding-bottom: 3rem; // Afegim espai a sota
 }
 
 .purchase-container {
@@ -17,28 +18,92 @@
 
 .content-box {
     background-color: white;
-    padding: 3rem 4rem;
+    padding: 2.5rem 3rem;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    max-width: 800px; // Ampliem una mica per donar espai a la galeria
+    width: 100%;
 }
 
+// --- ✨ NOUS ESTILS PER A LA GALERIA DE COLORS ✨ ---
+.color-showcase {
+    margin-bottom: 2rem;
+
+    h3 {
+        font-size: 1.8rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 2rem;
+    }
+}
+
+.color-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px; // Espai entre els cercles de color
+}
+
+.color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-image-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid white; // Vora blanca per destacar
+    outline: 1px solid #ddd; // Vora exterior subtil
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: help; // Indica que es pot interactuar però no és un enllaç
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.color-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.color-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+}
+
+// Divisor
+.divider {
+    border: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 2.5rem auto;
+}
+
+
+// Secció de contacte
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #333;
     margin-bottom: 1.5rem;
 }
 
-p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
 .email-button {
     display: inline-block;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     padding: 15px 30px;
     background-color: #ff6600;
     color: white;

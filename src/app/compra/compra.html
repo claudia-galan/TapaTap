@@ -2,14 +2,32 @@
 
 <div class="purchase-container">
     <div class="content-box">
-        <h2>Vols el teu Tapatap?</h2>
+
+        <!-- ✨ NOVA SECCIÓ DE COLORS ✨ -->
+        <div class="color-showcase">
+            <h3>Tria la teva combinació!</h3>
+            <p>El cos i la tapa poden ser de qualsevol color. Fes-lo únic!</p>
+            <div class="color-grid">
+                <!-- Iterem sobre l'array de colors definit al component -->
+                <div *ngFor="let color of colors" class="color-item">
+                    <div class="color-image-wrapper">
+                        <img [src]="color.imgPath" [alt]="'Tapatap de color ' + color.name" class="color-image">
+                    </div>
+                    <span class="color-label">{{ color.name }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divisor visual -->
+        <hr class="divider">
+
+        <!-- Secció de contacte que ja teníem -->
+        <h2>Llest per tenir el teu Tapatap?</h2>
         <p>
-            Per fer una comanda, consultar preus per a empreses o demanar informació sobre la personalització,
-            posa't en contacte amb nosaltres.
+            Escriu-nos per fer una comanda, consultar preus per a empreses o demanar informació sobre la personalització.
         </p>
-        <p>Estarem encantats d'atendre't!</p>
         <a href="mailto:info@tapatap.es" class="email-button">
-            Escriu-nos a info*tapatap.es
+            Contacta a info&#64;tapatap.es
         </a>
     </div>
 </div>

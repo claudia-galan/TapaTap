@@ -1,9 +1,43 @@
-<div class="historia-container">
-    <app-header></app-header>
-  
-    <div class="historia-content">
-      <!-- Contingut de la pàgina aquí -->
-        <img src="/img1.jpg" class="imatge">
-    </div>
-  </div>
+<app-header></app-header>
 
+<div class="page-container">
+  <div class="story-layout">
+
+    <!-- Columna esquerra per a les imatges -->
+    <div class="image-column">
+      <img src="/img1.jpg" alt="Una terrassa d'estiu" class="story-image">
+      <img src="/img2.jpg" alt="Dissenyador industrial treballant en un motlle" class="story-image">
+      <img src="/img3.jpg" alt="Producte Tapatap acabat" class="story-image">
+    </div>
+
+    <!-- Columna dreta per al text -->
+    <div class="text-column">
+      <h2>D'una anècdota a una idea</h2>
+      <p>
+        Tapatap neix d'una situació quotidiana que molts hem viscut. Un dia, gaudint d'una tarda en una terrassa, el nostre fundador, <strong>Raul Rosell</strong>, va veure com una vespa es ficava dins del refresc de la seva filla petita. Aquest petit ensurt va ser l'espurna que ho va encendre tot.
+      </p>
+      
+      <h3>La recerca d'una solució</h3>
+      <p>
+        Com a dissenyador industrial i expert en la fabricació de motlles d'injecció amb la seva empresa familiar, <strong>Rosell Boher S.A.</strong>, en Raul va buscar al mercat una solució universal, segura i reutilitzable per tapar gots i llaunes. En no trobar res que complís els seus estàndards de qualitat i funcionalitat, va decidir que si no existia, l'havia d'inventar.
+      </p>
+
+      <h3>"Made in Catalonia" com a filosofia</h3>
+      <p>
+        Des del primer esbós fins a la producció final, tot el procés de Tapatap es realitza íntegrament a <strong>Argentona (Maresme)</strong>. Creiem en el talent local i en l'economia de proximitat (Km 0). Fabricar aquí ens permet controlar cada detall, garantir la màxima qualitat amb <strong>silicona platí de grau alimentari</strong> i reduir la nostra petjada de carboni.
+      </p>
+      <p>
+        Cada Tapatap no és només una tapa; és una peça d'enginy català pensada per a la teva tranquil·litat i la del nostre planeta.
+      </p>
+
+      <!-- ✨ NOU BOTÓ DE CRIDA A L'ACCIÓ ✨ -->
+      <div class="cta-button-container">
+        <button class="call-to-action" routerLink="/producte">
+            Coneix les seves característiques
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

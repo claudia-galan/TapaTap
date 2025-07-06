@@ -15,7 +15,6 @@ export class Header {
     { label: 'Inici', path: '/' },
     { label: 'La Nostra Història', path: '/historia' },
     { label: 'El Producte', path: '/producte' },
-    { label: 'Contacte', path: '/contacte' },
     { label: 'Compra Ara', path: '/compra' } // Text més directe per a l'acció
   ];
 }
