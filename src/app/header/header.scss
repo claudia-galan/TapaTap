@@ -1,15 +1,41 @@
-// Contenidor principal de la capçalera
-.header-container {
-    display: flex;
-    align-items: center;
-    padding: 15px 30px; // Una mica més d'espai
-    background-color: rgba(0, 0, 0, 0.301); // Fons subtil per si es fa scroll
-    backdrop-filter: blur(2px); // Efecte vidre per a un toc modern
+/* Keyframes per a l'animació del logo (es manté) */
+@keyframes logo-jiggle {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.05) rotate(-3deg); }
+  50% { transform: scale(1.05) rotate(3deg); }
+  75% { transform: scale(1.05) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); }
 }
 
-// Logo
+/* Base de la capçalera: comú per a totes les pàgines */
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    transition: background-color 0.4s ease;
+}
+
+/* Estil per a la pàgina d'inici (amb difuminat) */
+.home-header {
+    background-color: rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(2px);
+}
+
+/* ✨ CANVI CLAU: Estil per a la RESTA de pàgines */
+.other-page-header {
+    /* El fons és completament transparent, sense ombres ni colors. */
+    background-color: transparent;
+}
+
+
+/* Logo (es manté l'animació) */
 .logo {
-    width: 100px; // Mida una mica més ajustada per a la capçalera
+    width: 100px;
     height: 100px;
     background-size: cover;
     border-radius: 10px;
@@ -17,30 +43,30 @@
     transition: transform 0.3s ease;
 
     &:hover {
-        transform: scale(1.05);
+        animation: logo-jiggle 0.6s ease-in-out;
     }
 }
 
-// Contenidor dels enllaços de navegació
+/* Contenidor dels enllaços de navegació */
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 15px; // Espai entre botons
-    margin-left: auto; // Alinea els botons a la dreta
+    gap: 15px;
+    margin-left: auto;
 }
 
-// Estil dels botons de navegació
+/* Estil dels botons (no cal canviar-lo, funciona perfectament) */
 .nav-button {
     display: inline-block;
-    padding: 10px 22px; // Mida continguda per a la capçalera
-    background-color: #ff6600; // Taronja corporatiu
+    padding: 10px 22px;
+    background-color: #ff6600;
     color: white;
     font-family: 'Quicksand', 'Arial Narrow', Arial, sans-serif;
     font-size: 1rem;
     font-weight: 700;
     text-decoration: none;
     border: none;
-    border-radius: 50px; // Forma de píndola
+    border-radius: 50px;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -48,20 +74,19 @@
     transition: all 0.3s ease;
 
     &:hover {
-        background-color: #e65c00; // Taronja més fosc
+        background-color: #e65c00;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     }
 }
 
-// Estil del botó quan la seva ruta està activa
+/* Estil del botó actiu */
 .nav-button.active {
-    background-color: #cc5200; // Un taronja encara més fosc per indicar activitat
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3); // Efecte "enfonsat"
-    transform: translateY(1px); // Simula que està premut
+    background-color: #cc5200;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    transform: translateY(1px);
 
     &:hover {
-      // Mantenim l'estat premut, sense canvis addicionals al hover
       background-color: #cc5200;
       transform: translateY(1px);
     }

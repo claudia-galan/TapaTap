@@ -1,27 +1,62 @@
+<!-- app/compra/compra.html -->
+
 <app-header></app-header>
 
 <div class="purchase-container">
     <div class="content-box">
-
-        <!-- ✨ NOVA SECCIÓ DE COLORS ✨ -->
         <div class="color-showcase">
             <h3>Tria la teva combinació!</h3>
             <p>El cos i la tapa poden ser de qualsevol color. Fes-lo únic!</p>
+            
+            <!-- ✨ CANVI: Graella de colors amb 5 imatges estàtiques de la carpeta pública/assets ✨ -->
             <div class="color-grid">
-                <!-- Iterem sobre l'array de colors definit al component -->
-                <div *ngFor="let color of colors" class="color-item">
+                <!-- Assegura't que les imatges es troben a la teva carpeta 'assets/images/' -->
+
+                <!-- Imatge 1 -->
+                <div class="color-item">
                     <div class="color-image-wrapper">
-                        <img [src]="color.imgPath" [alt]="'Tapatap de color ' + color.name" class="color-image">
+                        <img src="/vermell.jpg" alt="Tapatap de color Vermell" class="color-image">
                     </div>
-                    <span class="color-label">{{ color.name }}</span>
+                    <span class="color-label">Vermell</span>
                 </div>
+
+                <!-- Imatge 2 -->
+                <div class="color-item">
+                    <div class="color-image-wrapper">
+                        <img src="/negre.jpg" alt="Tapatap de color Negre" class="color-image">
+                    </div>
+                    <span class="color-label">Negre</span>
+                </div>
+
+                <!-- Imatge 3 -->
+                <div class="color-item">
+                    <div class="color-image-wrapper">
+                        <img src="/groc.jpg" alt="Tapatap de color Groc" class="color-image">
+                    </div>
+                    <span class="color-label">Groc</span>
+                </div>
+
+                <!-- Imatge 4 -->
+                <div class="color-item">
+                    <div class="color-image-wrapper">
+                        <img src="/lila.jpg" alt="Tapatap de color Lila" class="color-image">
+                    </div>
+                    <span class="color-label">Lila</span>
+                </div>
+
+                <!-- Imatge 5 -->
+                <div class="color-item">
+                    <div class="color-image-wrapper">
+                        <img src="/verd.jpg" alt="Tapatap de color Verd" class="color-image">
+                    </div>
+                    <span class="color-label">Verd</span>
+                </div>
+
             </div>
         </div>
 
-        <!-- Divisor visual -->
         <hr class="divider">
 
-        <!-- Secció de contacte que ja teníem -->
         <h2>Llest per tenir el teu Tapatap?</h2>
         <p>
             Escriu-nos per fer una comanda, consultar preus per a empreses o demanar informació sobre la personalització.

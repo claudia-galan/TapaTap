@@ -7,9 +7,11 @@
 // Contenidor principal de la pàgina per centrar el contingut
 .page-container {
     max-width: 1300px;
-    margin: 2rem auto;
-    padding: 2rem;
     font-family: 'Quicksand', sans-serif;
+
+    /* ✨ CORRECCIÓ: Eliminem el padding superior d'aquí per deixar que el contingut pugi */
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 // Layout principal amb Flexbox
@@ -21,6 +23,8 @@
 
 // Columna de les imatges (esquerra)
 .image-column {
+    /* ✨ CORRECCIÓ: Afegim espai superior només aquí */
+    padding-top: 140px; 
     flex: 0 0 40%; // Ocupa un 40% de l'ample i no creix
     display: flex;
     flex-direction: column;
@@ -32,7 +36,7 @@
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 15px; // ✨ CANTONADES RODONES ✨
+    border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
 
@@ -47,6 +51,8 @@
     color: #333;
 
     h2 {
+        /* ✨ CORRECCIÓ: Afegim espai superior al primer element */
+        padding-top: 140px; 
         font-size: 2.8rem;
         line-height: 1.2;
         margin-top: 0;
@@ -73,7 +79,7 @@
     }
 }
 
-// --- ✨ NOUS ESTILS PER AL BOTÓ ✨ ---
+// Estils per al botó de crida a l'acció
 .cta-button-container {
     margin-top: 2.5rem; // Espai superior per separar-lo del text
     text-align: left; // Alineat a l'esquerra per defecte
@@ -101,19 +107,22 @@
 
 
 // --- RESPONSIVE DESIGN ---
-// Per a pantalles més petites (tauletes i mòbils)
 @media (max-width: 992px) {
     .story-layout {
         flex-direction: column; // Apilem les columnes una sobre l'altra
     }
 
+    .image-column, .text-column h2 {
+        /* ✨ CORRECCIÓ: Reduïm l'espaiat en mòbil i el sincronitzem */
+        padding-top: 120px;
+    }
+    
     .image-column {
-        flex: 1 1 auto; // Permet que ocupi tot l'ample
+        flex: 1 1 auto;
         width: 100%;
-        // En mòbil, podríem mostrar les imatges en horitzontal
         flex-direction: row; 
-        overflow-x: auto; // Per si no caben totes
-        padding-bottom: 1rem; // Espai per a la barra de scroll si apareix
+        overflow-x: auto;
+        padding-bottom: 1rem;
     }
 
     .text-column {
@@ -121,7 +130,6 @@
         h3 { font-size: 1.6rem; }
     }
 
-    // Centrem el botó en dispositius mòbils
     .cta-button-container {
         text-align: center;
     }
@@ -129,6 +137,6 @@
 
 @media (max-width: 576px) {
     .image-column {
-        flex-direction: column; // En pantalles molt petites, tornem a apilar-les
+        flex-direction: column;
     }
 }

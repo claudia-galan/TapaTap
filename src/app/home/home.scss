@@ -12,6 +12,61 @@
   75% {
     transform: rotate(-1deg);
   }
+}/* app/home/home.scss */
+
+/* ... keyframes existents ... */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.background-container {
+    /* ... estils existents ... */
+    /* Un filtre més vibrant i modern per a la imatge de fons */
+    filter: saturate(1.1) contrast(1.1) brightness(0.95);
+    /* Afegim un overlay degradat per millorar la llegibilitat del text */
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 50%);
+        pointer-events: none;
+    }
+}
+
+.content-center {
+    /* ... estils existents ... */
+    /* Apliquem l'animació a tot el bloc de contingut */
+    animation: fadeInUp 1s ease-out;
+}
+
+.titol {
+    /* ... estils existents ... */
+    font-size: 12rem; /* Una mida més impactant */
+    font-family: 'Montserrat', 'Concert One', sans-serif;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Una ombra més pronunciada */
+}
+
+/* ✨ NOU ESTIL PER AL SUBTÍTOL ✨ */
+.subtitol {
+    font-size: 1.5rem;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-top: -1rem; /* El pugem una mica */
+    margin-bottom: 2rem;
+}
+
+.call-to-action:hover {
+    /* ... estils hover existents ... */
+    animation: wiggle 0.5s ease-in-out; /* Mantenim la divertida animació */
 }
 
 

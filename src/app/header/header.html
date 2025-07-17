@@ -1,4 +1,5 @@
-<div class="header-container">
+<!-- ✨ CANVI: Afegim [ngClass] per canviar l'estil dinàmicament ✨ -->
+<div class="header-container" [ngClass]="{ 'home-header': isHomePage, 'other-page-header': !isHomePage }">
   <img src="/imglogo.png" alt="Logo de Tapatap" class="logo" routerLink="/" />
 
   <nav class="nav-links">

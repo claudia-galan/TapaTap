@@ -1,22 +1,25 @@
+// app/compra/compra.ts
+
 import { Component } from '@angular/core';
 import { Header } from '../header/header';
-import { NgFor } from '@angular/common'; // Importem NgFor per poder fer el bucle
+// ✨ CANVI: Importem NgFor i NgStyle per a les directives de la plantilla ✨
+import { NgFor, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-compra',
   standalone: true,
-  imports: [Header, NgFor], // Afegim NgFor
+  // ✨ CANVI: Afegim NgStyle a les importacions del component ✨
+  imports: [Header, NgFor, NgStyle],
   templateUrl: './compra.html',
   styleUrl: './compra.scss'
 })
 export class Compra {
-  // Array amb els colors disponibles. Fàcil de mantenir i ampliar!
   colors = [
-    { name: 'Groc Llimona', imgPath: 'tapatapsf.png' },
-    { name: 'Taronja Foc', imgPath: 'tapatapsf.png' },
-    { name: 'Blau Cel', imgPath: 'tapatapsf.png' },
-    { name: 'Negre Elegant', imgPath: 'tapatapsf.png' },
-    { name: 'Rosa Corall', imgPath: 'tapatapsf.png' },
-    { name: 'Verd Menta', imgPath: 'tapatapsf.png' }
+    { name: 'Groc Llimona',  imgPath: 'tapatapsf.png', colorHex: '#F7DC6F' },
+    { name: 'Taronja Foc',   imgPath: 'tapatapsf.png', colorHex: '#E67E22' },
+    { name: 'Blau Cel',      imgPath: 'tapatapsf.png', colorHex: '#5DADE2' },
+    { name: 'Verd Menta',    imgPath: 'tapatapsf.png', colorHex: '#76D7C4' },
+    { name: 'Rosa Corall',   imgPath: 'tapatapsf.png', colorHex: '#F1948A' },
+    { name: 'Negre Elegant', imgPath: 'tapatapsf.png', colorHex: '#34495E' }
   ];
 }

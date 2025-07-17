@@ -3,7 +3,7 @@
     flex-direction: column;
     min-height: 100vh;
     background-color: #f4f4f4;
-    padding-bottom: 3rem; // Afegim espai a sota
+    /* ✨ CORRECCIÓ: Traiem el padding-bottom per control·lar-ho millor a sota */
 }
 
 .purchase-container {
@@ -13,19 +13,24 @@
     justify-content: center;
     text-align: center;
     font-family: 'Quicksand', sans-serif;
+    
+    /* ✨ CORRECCIÓ: Traiem el padding general d'aquí */
     padding: 2rem;
 }
 
 .content-box {
+    /* ✨ CORRECCIÓ: Afegim espaiat superior i inferior per controlar la posició */
+    margin-top: 140px; 
+    margin-bottom: 3rem;
+
     background-color: white;
     padding: 2.5rem 3rem;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    max-width: 800px; // Ampliem una mica per donar espai a la galeria
+    max-width: 800px;
     width: 100%;
 }
 
-// --- ✨ NOUS ESTILS PER A LA GALERIA DE COLORS ✨ ---
 .color-showcase {
     margin-bottom: 2rem;
 
@@ -46,7 +51,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px; // Espai entre els cercles de color
+    gap: 25px;
 }
 
 .color-item {
@@ -62,10 +67,10 @@
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 3px solid white; // Vora blanca per destacar
-    outline: 1px solid #ddd; // Vora exterior subtil
+    border: 3px solid white;
+    outline: 1px solid #ddd;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: help; // Indica que es pot interactuar però no és un enllaç
+    cursor: help;
 
     &:hover {
         transform: scale(1.1);
@@ -92,7 +97,6 @@
     background-color: #e0e0e0;
     margin: 2.5rem auto;
 }
-
 
 // Secció de contacte
 h2 {
