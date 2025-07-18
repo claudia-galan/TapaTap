@@ -1,6 +1,6 @@
 :host {
   display: block;
-  background-color: #f9f9f9;
+  background-color: #f5e0c4;
   color: #333;
   font-family: 'Quicksand', sans-serif;
 }
@@ -8,41 +8,9 @@
 .product-page-container {
   max-width: 1200px;
   margin: 0 auto;
-  /* ✨ CORRECCIÓ: Treiem el padding superior d'aquí */
-  padding: 2rem;
-}
-
-// Hero Section
-.hero-section {
-  /* ✨ CORRECCIÓ: Afegim el padding aquí per baixar el contingut */
-  padding-top: 140px; 
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 4rem;
-
-  .hero-text {
-    flex: 1;
-    h1 {
-      font-size: 2.8rem;
-      color: #333;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-    p {
-      font-size: 1.2rem;
-      color: #555;
-    }
-  }
-
-  .hero-image {
-    flex: 1;
-    img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-  }
+  
+  /* ✨ CORRECCIÓ CLAU: Afegim un padding superior per baixar tot el contingut ✨ */
+  padding: 140px 2rem 4rem; /* 140px a dalt, 2rem als costats, 4rem a baix */
 }
 
 // Features Section
@@ -62,7 +30,7 @@
   }
 
   .feature-item {
-    background-color: white;
+    background-color: rgb(255, 254, 253);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -137,17 +105,12 @@
 }
 
 // Responsive
-@media (max-width: 992px) {
-    .hero-section {
-        padding-top: 120px;
-    }
-}
-
 @media (max-width: 768px) {
-    .hero-section, .customization-section {
+    .customization-section {
         flex-direction: column;
     }
     .features-grid {
         grid-template-columns: 1fr;
     }
 }
+// Afegeix això a la regla :host de cada fitxer SCSS de pàgina

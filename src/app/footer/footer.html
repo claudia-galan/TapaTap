@@ -1,0 +1,40 @@
+<!-- app/footer/footer.html -->
+<!-- ✨ CANVI CLAU: El *ngIf està aquí. El footer només es renderitzarà si isVisible és true. ✨ -->
+<footer class="footer-container" *ngIf="isVisible">
+  <div class="footer-content">
+
+    <!-- Secció del Logo i Contacte -->
+    <div class="footer-section about">
+      <img src="/imglogo.png" alt="Logo de Tapatap" class="footer-logo" />
+      <p class="contact-info">
+        Necessites ajuda o vols fer una comanda gran?<br>
+        <a href="mailto:info@tapatap.es">info&#64;tapatap.es</a>
+      </p>
+    </div>
+
+    <!-- Secció de Navegació -->
+    <div class="footer-section links">
+      <h4>Navegació</h4>
+      <ul>
+        <li><a routerLink="/">Inici</a></li>
+        <li><a routerLink="/historia">La Nostra Història</a></li>
+        <li><a routerLink="/producte">El Producte</a></li>
+        <li><a routerLink="/compra">Compra Ara</a></li>
+      </ul>
+    </div>
+
+    <!-- Secció Legal i Social -->
+    <div class="footer-section legal">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Política de Privacitat</a></li>
+        <li><a href="#">Termes i Condicions</a></li>
+        <li><a href="#">Política de Cookies</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Tapatap. Tots els drets reservats.</p>
+  </div>
+</footer>

@@ -3,13 +3,13 @@
 import { Component } from '@angular/core';
 import { Header } from '../header/header';
 // ✨ CANVI: Importem NgFor i NgStyle per a les directives de la plantilla ✨
-import { NgFor, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-compra',
   standalone: true,
   // ✨ CANVI: Afegim NgStyle a les importacions del component ✨
-  imports: [Header, NgFor, NgStyle],
+  imports: [Header],
   templateUrl: './compra.html',
   styleUrl: './compra.scss'
 })

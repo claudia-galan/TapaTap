@@ -1,9 +1,8 @@
-<!-- ✨ CANVI: Afegim [ngClass] per canviar l'estil dinàmicament ✨ -->
+<!-- La directiva [ngClass] aplica l'estil correcte basant-se en la variable 'isHomePage' -->
 <div class="header-container" [ngClass]="{ 'home-header': isHomePage, 'other-page-header': !isHomePage }">
   <img src="/imglogo.png" alt="Logo de Tapatap" class="logo" routerLink="/" />
 
   <nav class="nav-links">
-    <!-- Generem els botons de navegació dinàmicament -->
     <a *ngFor="let item of navItems"
        [routerLink]="item.path"
        routerLinkActive="active"

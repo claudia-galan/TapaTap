@@ -2,8 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f4f4f4;
-    /* ✨ CORRECCIÓ: Traiem el padding-bottom per control·lar-ho millor a sota */
+    background-color: #FDFBF7;
 }
 
 .purchase-container {
@@ -13,16 +12,12 @@
     justify-content: center;
     text-align: center;
     font-family: 'Quicksand', sans-serif;
-    
-    /* ✨ CORRECCIÓ: Traiem el padding general d'aquí */
     padding: 2rem;
 }
 
 .content-box {
-    /* ✨ CORRECCIÓ: Afegim espaiat superior i inferior per controlar la posició */
     margin-top: 140px; 
     margin-bottom: 3rem;
-
     background-color: white;
     padding: 2.5rem 3rem;
     border-radius: 15px;
@@ -51,7 +46,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
+    gap: 35px;
+
+    /* ✨ CANVI CLAU: Limitem l'amplada per forçar la distribució ✨ */
+    max-width: 480px; /* (120px * 3 cercles) + (35px * 2 espais) = 430px. Donem una mica de marge. */
+    margin: 0 auto;  /* Centrem el contenidor de la graella */
 }
 
 .color-item {
@@ -62,15 +61,16 @@
 }
 
 .color-image-wrapper {
-    width: 80px;
-    height: 80px;
+    /* ✨ CANVI: Augmentem la mida de 80px a 120px ✨ */
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 3px solid white;
     outline: 1px solid #ddd;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: help;
+    cursor: pointer;
 
     &:hover {
         transform: scale(1.1);
@@ -85,7 +85,8 @@
 }
 
 .color-label {
-    font-size: 0.9rem;
+    /* ✨ CANVI: Augmentem la mida de la lletra perquè vagi a joc ✨ */
+    font-size: 1.1rem;
     font-weight: 600;
     color: #555;
 }

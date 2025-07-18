@@ -1,4 +1,3 @@
-/* Keyframes per a l'animació del logo (es manté) */
 @keyframes logo-jiggle {
   0% { transform: scale(1) rotate(0deg); }
   25% { transform: scale(1.05) rotate(-3deg); }
@@ -7,7 +6,6 @@
   100% { transform: scale(1) rotate(0deg); }
 }
 
-/* Base de la capçalera: comú per a totes les pàgines */
 .header-container {
     position: fixed;
     top: 0;
@@ -17,23 +15,21 @@
     display: flex;
     align-items: center;
     padding: 15px 30px;
-    transition: background-color 0.4s ease;
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
 }
 
-/* Estil per a la pàgina d'inici (amb difuminat) */
+/* ✨ ESTIL PER A LA PÀGINA D'INICI ✨ */
 .home-header {
     background-color: rgba(0, 0, 0, 0.301);
     backdrop-filter: blur(2px);
 }
 
-/* ✨ CANVI CLAU: Estil per a la RESTA de pàgines */
+/* ✨ ESTIL PER A LA RESTA DE PÀGINES ✨ */
 .other-page-header {
-    /* El fons és completament transparent, sense ombres ni colors. */
     background-color: transparent;
+    backdrop-filter: none;
 }
 
-
-/* Logo (es manté l'animació) */
 .logo {
     width: 100px;
     height: 100px;
@@ -47,7 +43,6 @@
     }
 }
 
-/* Contenidor dels enllaços de navegació */
 .nav-links {
     display: flex;
     align-items: center;
@@ -55,7 +50,6 @@
     margin-left: auto;
 }
 
-/* Estil dels botons (no cal canviar-lo, funciona perfectament) */
 .nav-button {
     display: inline-block;
     padding: 10px 22px;
@@ -80,7 +74,6 @@
     }
 }
 
-/* Estil del botó actiu */
 .nav-button.active {
     background-color: #cc5200;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -91,3 +84,5 @@
       transform: translateY(1px);
     }
 }
+
+

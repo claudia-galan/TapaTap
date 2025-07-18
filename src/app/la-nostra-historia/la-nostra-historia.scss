@@ -140,3 +140,43 @@
         flex-direction: column;
     }
 }
+// app/la-nostra-historia/la-nostra-historia.scss
+:host {
+    display: block;
+    background-color: #f5e0c4;
+    min-height: 100vh;
+}
+
+.page-container {
+    max-width: 1300px;
+    font-family: 'Quicksand', sans-serif;
+    /* ✨ CORRECCIÓ: Eliminem el padding superior d'aquí */
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.story-layout {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.image-column {
+    /* ✨ CORRECCIÓ: Afegim espai superior només aquí */
+    padding-top: 140px; 
+    flex: 0 0 40%;
+    /* ... */
+}
+
+.text-column {
+    h2 {
+        /* ✨ CORRECCIÓ: Afegim espai superior al primer element */
+        padding-top: 140px; 
+        /* ... */
+    }
+    /* ... */
+}
+
+/* ... La resta d'estils es mantenen ... */
+
+// Afegeix això a la regla :host de cada fitxer SCSS de pàgina

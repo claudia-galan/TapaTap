@@ -1,0 +1,104 @@
+/* app/footer/footer.scss */
+:host {
+  display: block;
+  width: 100%;
+  margin-top: auto; /* Aquesta línia és clau per empènyer el footer cap avall */
+}
+
+.footer-container {
+  background-color: #2c3e50; /* Un blau fosc elegant */
+  color: #ecf0f1; /* Un blanc trencat per al text */
+  padding: 3rem 2rem 1rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 220px; /* Evita que les columnes siguin massa estretes */
+
+  h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background-color: #ff6600; /* Taronja corporatiu */
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 0.7rem;
+  }
+
+  a {
+    color: #bdc3c7; /* Un gris clar per als enllaços */
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+
+    &:hover {
+      color: #ff6600;
+      padding-left: 5px;
+    }
+  }
+}
+
+.footer-logo {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+.contact-info a {
+  color: #ff6600;
+  font-weight: 700;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  border-top: 1px solid #34495e;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
