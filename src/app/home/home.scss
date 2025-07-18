@@ -1,20 +1,13 @@
-/* ✨ NOU: Keyframes per a l'animació de vibració ✨ */
-@keyframes wiggle {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-3deg);
-  }
-  50% {
-    transform: rotate(3deg);
-  }
-  75% {
-    transform: rotate(-1deg);
-  }
-}/* app/home/home.scss */
+/* app/home/home.scss */
 
-/* ... keyframes existents ... */
+/* --- Animacions (sense canvis) --- */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  75% { transform: rotate(-1deg); }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -26,95 +19,70 @@
   }
 }
 
-.background-container {
-    /* ... estils existents ... */
-    /* Un filtre més vibrant i modern per a la imatge de fons */
-    filter: saturate(1.1) contrast(1.1) brightness(0.95);
-    /* Afegim un overlay degradat per millorar la llegibilitat del text */
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 50%);
-        pointer-events: none;
-    }
-}
-
-.content-center {
-    /* ... estils existents ... */
-    /* Apliquem l'animació a tot el bloc de contingut */
-    animation: fadeInUp 1s ease-out;
-}
-
-.titol {
-    /* ... estils existents ... */
-    font-size: 12rem; /* Una mida més impactant */
-    font-family: 'Montserrat', 'Concert One', sans-serif;
-    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Una ombra més pronunciada */
-}
-
-/* ✨ NOU ESTIL PER AL SUBTÍTOL ✨ */
-.subtitol {
-    font-size: 1.5rem;
-    color: white;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 500;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    margin-top: -1rem; /* El pugem una mica */
-    margin-bottom: 2rem;
-}
-
-.call-to-action:hover {
-    /* ... estils hover existents ... */
-    animation: wiggle 0.5s ease-in-out; /* Mantenim la divertida animació */
-}
-
-
-.background-container {
-    background-image: url('/img3.jpg');
-    filter: sepia(0) contrast(0.7) brightness(1.05) saturate(1.1) hue-rotate(-10deg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: rgba(white, 1);
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
+/* --- Estils Generals (Escriptori) --- */
 :host {
     display: block;
     height: 100%;
     width: 100%;
 }
 
+.background-container {
+    background-image: url('/img3.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrem el contingut verticalment */
+    position: relative;
+    overflow: hidden; /* Evita qualsevol desbordament */
+    
+    filter: saturate(1.1) contrast(1.1) brightness(0.95);
+}
+
 .background-container::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(255, 150, 90, 0.2);
-    mix-blend-mode: soft-light;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 50%);
     pointer-events: none;
 }
 
 .content-center {
     text-align: center;
-    margin: auto;
+    animation: fadeInUp 1s ease-out;
+    padding: 0 20px; /* Afegim padding horitzontal per a mòbils */
 }
 
 .titol {
+    /* Mida per a escriptori */
     font-size: 11rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
     color: #ffffff;
-    font-family: 'Concert One';
+    font-family: 'Montserrat', 'Concert One', sans-serif;
     text-transform: uppercase;
     cursor: default;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    line-height: 1;
+    margin: 0;
+    transition: font-size 0.3s ease; /* Transició suau per al canvi de mida */
+}
+
+.subtitol {
+    /* Mida per a escriptori */
+    font-size: 1.5rem;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 0.5rem auto 2rem;
+    max-width: 500px;
+    transition: font-size 0.3s ease;
 }
 
 .call-to-action {
+    /* Mida per a escriptori */
     background-color: #ff6600;
     color: white;
     border: none;
@@ -126,13 +94,50 @@
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease;
-    margin-top: 20px;
     
-    /* ✨ CANVI: Apliquem l'animació al fer hover ✨ */
     &:hover {
         background-color: #e65c00;
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        // La següent línia crida la nostra animació
         animation: wiggle 0.5s ease-in-out;
+    }
+}
+
+
+/* --- ✨ SECCIÓ RESPONSIVE PER A MÒBILS (Enfocament millorat) ✨ --- */
+
+/* Punt de ruptura general per a tauletes i mòbils */
+@media (max-width: 992px) {
+    .titol {
+        /* ✨ CANVI CLAU: Utilitzem unitats relatives a l'amplada de la pantalla (Viewport Width) ✨ */
+        /* 15vw significa que la lletra ocuparà el 15% de l'amplada de la pantalla. S'ajusta automàticament. */
+        font-size: 15vw; 
+    }
+
+    .subtitol {
+        font-size: 1.2rem;
+        max-width: 90%; /* Ocupa més amplada en pantalles petites */
+    }
+
+    .call-to-action {
+        font-size: 1.2rem;
+        padding: 12px 25px;
+    }
+}
+
+/* Ajustos fins per a mòbils molt petits */
+@media (max-width: 480px) {
+    .titol {
+        /* Augmentem una mica el percentatge per a pantalles molt estretes per aprofitar l'espai */
+        font-size: 15vw;
+    }
+
+    .subtitol {
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem; /* Més espai entre subtítol i botó */
+    }
+
+    .call-to-action {
+        font-size: 1.1rem;
+        padding: 10px 20px;
     }
 }

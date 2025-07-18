@@ -1,3 +1,4 @@
+// app/header/header.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, RouterLink, RouterLinkActive } from '@angular/router';
 import { NgFor, NgClass } from '@angular/common';
@@ -12,8 +13,10 @@ import { filter } from 'rxjs/operators';
   styleUrl: './header.scss'
 })
 export class Header implements OnInit, OnDestroy {
-  // Aquesta variable controla quin estil s'aplica al header
   public isHomePage: boolean = true;
+  
+  // ✨ CANVI CLAU: Variable per controlar l'estat del menú mòbil ✨
+  public isMenuOpen: boolean = false;
   
   private routerSubscription!: Subscription;
 
@@ -27,12 +30,14 @@ export class Header implements OnInit, OnDestroy {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    // Subscripció per saber si som a la pàgina d'inici
     this.routerSubscription = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // Si la URL és la d'inici, isHomePage serà true. Altrament, serà false.
         this.isHomePage = (event.urlAfterRedirects === '/');
+        // Molt important: tanquem el menú en canviar de pàgina
+        this.closeMenu();
       }
     });
   }
@@ -41,5 +46,15 @@ export class Header implements OnInit, OnDestroy {
     if (this.routerSubscription) {
       this.routerSubscription.unsubscribe();
     }
+  }
+
+  // ✨ CANVI CLAU: Funció per obrir/tancar el menú mòbil ✨
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  // ✨ CANVI CLAU: Funció per tancar el menú (útil per als enllaços) ✨
+  closeMenu(): void {
+    this.isMenuOpen = false;
   }
 }

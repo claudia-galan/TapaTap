@@ -1,3 +1,6 @@
+/* app/header/header.scss */
+
+/* Animació per al logo */
 @keyframes logo-jiggle {
   0% { transform: scale(1) rotate(0deg); }
   25% { transform: scale(1.05) rotate(-3deg); }
@@ -6,6 +9,7 @@
   100% { transform: scale(1) rotate(0deg); }
 }
 
+/* Contenidor principal de la capçalera */
 .header-container {
     position: fixed;
     top: 0;
@@ -14,22 +18,24 @@
     z-index: 1000;
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Alinea logo a l'esquerra i nav/hamburguesa a la dreta */
     padding: 15px 30px;
     transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
 }
 
-/* ✨ ESTIL PER A LA PÀGINA D'INICI ✨ */
+/* Estil per a la pàgina d'inici */
 .home-header {
     background-color: rgba(0, 0, 0, 0.301);
     backdrop-filter: blur(2px);
 }
 
-/* ✨ ESTIL PER A LA RESTA DE PÀGINES ✨ */
+/* Estil per a la resta de pàgines */
 .other-page-header {
     background-color: transparent;
     backdrop-filter: none;
 }
 
+/* Logo */
 .logo {
     width: 100px;
     height: 100px;
@@ -37,19 +43,101 @@
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    z-index: 1001; /* Assegura que el logo estigui per sobre de l'overlay */
 
     &:hover {
         animation: logo-jiggle 0.6s ease-in-out;
     }
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-left: auto;
+
+/* --- Estils per a la navegació MÒBIL --- */
+
+/* Botó Hamburguesa */
+.hamburger-button {
+    display: none; /* Amagat per defecte, es mostra en la media query */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Per sobre de tot */
+
+    .hamburger-line {
+        width: 100%;
+        height: 3px;
+        background-color: #ff6600;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Animació a creu (X) quan el menú està obert */
+    &.is-active .hamburger-line:nth-child(1) {
+        transform: translateY(10.5px) rotate(45deg);
+    }
+    &.is-active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    &.is-active .hamburger-line:nth-child(3) {
+        transform: translateY(-10.5px) rotate(-45deg);
+    }
 }
 
+/* Overlay per enfosquir el fons */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 998; /* Per sota del menú però per sobre del contingut */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &.is-active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Panell del menú lateral */
+.mobile-nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100%;
+    background-color: #2c3e50; /* Color fosc del footer */
+    z-index: 999;
+    transform: translateX(100%); /* Comença fora de la pantalla */
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+
+    &.is-open {
+        transform: translateX(0); /* Es desplaça a la seva posició visible */
+    }
+
+    /* Estil dels botons dins del menú mòbil */
+    .nav-button {
+      font-size: 1.2rem;
+      padding: 15px 30px;
+      width: 90%;
+      text-align: center;
+    }
+}
+
+
+/* --- Estils dels BOTONS DE NAVEGACIÓ (comuns) --- */
 .nav-button {
     display: inline-block;
     padding: 10px 22px;
@@ -86,3 +174,17 @@
 }
 
 
+/* --- MEDIA QUERY: Punt de Ruptura per a Mòbil --- */
+/* A partir de 992px d'amplada cap avall, s'aplicaran aquests estils */
+@media (max-width: 992px) {
+    
+    /* Amaguem la navegació d'escriptori */
+    .desktop-nav {
+        display: none;
+    }
+
+    /* Mostrem el botó d'hamburguesa */
+    .hamburger-button {
+        display: flex;
+    }
+}
