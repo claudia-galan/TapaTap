@@ -26,20 +26,13 @@ export class Header implements OnInit, OnDestroy {
     { label: 'El Producte', path: '/producte' },
     { label: 'Compra Ara', path: '/compra' }
   ];
+  estaAInici: any;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    // Subscripció per saber si som a la pàgina d'inici
-    this.routerSubscription = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.isHomePage = (event.urlAfterRedirects === '/');
-        // Molt important: tanquem el menú en canviar de pàgina
-        this.closeMenu();
-      }
-    });
+    this.estaAInici = 
+    (!this.router.url.includes('historia') && !this.router.url.includes('producte')  && !this.router.url.includes('compra') );
   }
 
   ngOnDestroy(): void {
@@ -48,12 +41,12 @@ export class Header implements OnInit, OnDestroy {
     }
   }
 
-  // ✨ CANVI CLAU: Funció per obrir/tancar el menú mòbil ✨
+
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  // ✨ CANVI CLAU: Funció per tancar el menú (útil per als enllaços) ✨
+
   closeMenu(): void {
     this.isMenuOpen = false;
   }

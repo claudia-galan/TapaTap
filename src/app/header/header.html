@@ -1,40 +1,40 @@
-<!-- app/header/header.html -->
-<div class="header-container" [ngClass]="{ 'home-header': isHomePage, 'other-page-header': !isHomePage }">
 
-  <!-- Logo (no canvia) -->
-  <img src="/imglogo.png" alt="Logo de Tapatap" class="logo" routerLink="/" (click)="closeMenu()" />
+@if (estaAInici){
 
-  <!-- ✨ NOU: Botó d'Hamburguesa (només visible en mòbil) ✨ -->
-  <button class="hamburger-button" (click)="toggleMenu()" [class.is-active]="isMenuOpen">
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-  </button>
+  <div class="header-container" [ngClass]="{ 'home-header': isHomePage, 'other-page-header': !isHomePage }">
+  
+    <!-- Logo (no canvia) -->
+    <img src="/imglogo.png" alt="Logo de Tapatap" class="logo" routerLink="/" (click)="closeMenu()" />
+  
+    <!-- Navegació d'escriptori (la de sempre, però ara amb una classe) -->
+    <nav class="nav-links desktop-nav">
+      <a *ngFor="let item of navItems"
+         [routerLink]="item.path"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+         class="nav-button">
+        {{ item.label }}
+      </a>
+    </nav>
+  
+  </div>
+} @else {
+  <div class="header-container" [ngClass]="{ 'home-header': !isHomePage, 'other-page-header': isHomePage }">
+  
+    <!-- Logo (no canvia) -->
+    <img src="/imglogo.png" alt="Logo de Tapatap" class="logo" routerLink="/" (click)="closeMenu()" />
+  
+    <!-- Navegació d'escriptori (la de sempre, però ara amb una classe) -->
+    <nav class="nav-links desktop-nav">
+      <a *ngFor="let item of navItems"
+         [routerLink]="item.path"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+         class="nav-button">
+        {{ item.label }}
+      </a>
+    </nav>
+  
+  </div>
+}
 
-  <!-- Navegació d'escriptori (la de sempre, però ara amb una classe) -->
-  <nav class="nav-links desktop-nav">
-    <a *ngFor="let item of navItems"
-       [routerLink]="item.path"
-       routerLinkActive="active"
-       [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-       class="nav-button">
-      {{ item.label }}
-    </a>
-  </nav>
-
-</div>
-
-<!-- ✨ NOU: Overlay per enfosquir el fons quan el menú està obert ✨ -->
-<div class="menu-overlay" [class.is-active]="isMenuOpen" (click)="closeMenu()"></div>
-
-<!-- ✨ NOU: Menú de Navegació Mòbil (es desplega) ✨ -->
-<nav class="mobile-nav-menu" [class.is-open]="isMenuOpen">
-  <a *ngFor="let item of navItems"
-     [routerLink]="item.path"
-     routerLinkActive="active"
-     [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-     class="nav-button"
-     (click)="closeMenu()"> <!-- Tanquem el menú en fer clic a un enllaç -->
-    {{ item.label }}
-  </a>
-</nav>
