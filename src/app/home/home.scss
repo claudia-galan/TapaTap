@@ -1,6 +1,6 @@
 /* app/home/home.scss */
 
-/* --- Animacions (sense canvis) --- */
+/* --- Animacions --- */
 @keyframes wiggle {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(-3deg); }
@@ -9,17 +9,11 @@
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Estils Generals (Escriptori) --- */
+/* --- Estils Generals --- */
 :host {
     display: block;
     height: 100%;
@@ -34,10 +28,10 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrem el contingut verticalment */
+    justify-content: center;
+    align-items: center;
     position: relative;
-    overflow: hidden; /* Evita qualsevol desbordament */
-    
+    overflow: hidden;
     filter: saturate(1.1) contrast(1.1) brightness(0.95);
 }
 
@@ -52,12 +46,12 @@
 .content-center {
     text-align: center;
     animation: fadeInUp 1s ease-out;
-    padding: 0 20px; /* Afegim padding horitzontal per a mòbils */
+    padding: 0 20px; /* Padding horitzontal per a mòbils */
 }
 
 .titol {
-    /* Mida per a escriptori */
-    font-size: 11rem;
+    /* ✨ CANVI CLAU: Mida fluida amb vw i min/max per a control absolut */
+    font-size: clamp(4.5rem, 15vw, 11rem); 
     font-weight: bold;
     color: #ffffff;
     font-family: 'Montserrat', 'Concert One', sans-serif;
@@ -66,28 +60,25 @@
     text-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     line-height: 1;
     margin: 0;
-    transition: font-size 0.3s ease; /* Transició suau per al canvi de mida */
 }
 
 .subtitol {
-    /* Mida per a escriptori */
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
     color: white;
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     margin: 0.5rem auto 2rem;
-    max-width: 500px;
-    transition: font-size 0.3s ease;
+    max-width: 90%; /* Amplada màxima relativa */
+    width: 500px; /* Amplada base per a escriptori */
 }
 
 .call-to-action {
-    /* Mida per a escriptori */
     background-color: #ff6600;
     color: white;
     border: none;
     padding: 15px 30px;
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     border-radius: 50px;
@@ -102,42 +93,13 @@
     }
 }
 
-
-/* --- ✨ SECCIÓ RESPONSIVE PER A MÒBILS (Enfocament millorat) ✨ --- */
-
-/* Punt de ruptura general per a tauletes i mòbils */
-@media (max-width: 992px) {
-    .titol {
-        /* ✨ CANVI CLAU: Utilitzem unitats relatives a l'amplada de la pantalla (Viewport Width) ✨ */
-        /* 15vw significa que la lletra ocuparà el 15% de l'amplada de la pantalla. S'ajusta automàticament. */
-        font-size: 15vw; 
-    }
-
-    .subtitol {
-        font-size: 1.2rem;
-        max-width: 90%; /* Ocupa més amplada en pantalles petites */
-    }
-
-    .call-to-action {
-        font-size: 1.2rem;
-        padding: 12px 25px;
-    }
-}
-
-/* Ajustos fins per a mòbils molt petits */
+/* --- Ajustos fins per a mòbils molt petits --- */
 @media (max-width: 480px) {
-    .titol {
-        /* Augmentem una mica el percentatge per a pantalles molt estretes per aprofitar l'espai */
-        font-size: 15vw;
-    }
-
     .subtitol {
-        font-size: 1.1rem;
-        margin-bottom: 2.5rem; /* Més espai entre subtítol i botó */
+        margin-bottom: 2.5rem;
     }
 
     .call-to-action {
-        font-size: 1.1rem;
-        padding: 10px 20px;
+        padding: 12px 25px;
     }
 }

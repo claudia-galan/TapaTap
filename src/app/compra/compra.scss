@@ -1,8 +1,8 @@
+/* app/compra/compra.scss */
 :host {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #FDFBF7;
 }
 
 .purchase-container {
@@ -12,12 +12,10 @@
     justify-content: center;
     text-align: center;
     font-family: 'Quicksand', sans-serif;
-    padding: 2rem;
+    padding: 140px 1rem 3rem; /* ✨ CANVI: Padding superior per header i lateral per mòbil */
 }
 
 .content-box {
-    margin-top: 140px; 
-    margin-bottom: 3rem;
     background-color: white;
     padding: 2.5rem 3rem;
     border-radius: 15px;
@@ -46,11 +44,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 35px;
-
-    /* ✨ CANVI CLAU: Limitem l'amplada per forçar la distribució ✨ */
-    max-width: 480px; /* (120px * 3 cercles) + (35px * 2 espais) = 430px. Donem una mica de marge. */
-    margin: 0 auto;  /* Centrem el contenidor de la graella */
+    gap: 30px;
+    margin: 0 auto;
 }
 
 .color-item {
@@ -61,7 +56,6 @@
 }
 
 .color-image-wrapper {
-    /* ✨ CANVI: Augmentem la mida de 80px a 120px ✨ */
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -85,13 +79,11 @@
 }
 
 .color-label {
-    /* ✨ CANVI: Augmentem la mida de la lletra perquè vagi a joc ✨ */
     font-size: 1.1rem;
     font-weight: 600;
     color: #555;
 }
 
-// Divisor
 .divider {
     border: 0;
     height: 1px;
@@ -99,7 +91,6 @@
     margin: 2.5rem auto;
 }
 
-// Secció de contacte
 h2 {
     font-size: 2.2rem;
     color: #333;
@@ -121,5 +112,51 @@ h2 {
     &:hover {
         background-color: #e65c00;
         transform: scale(1.05);
+    }
+}
+
+/* --- ✨ RESPONSIVE DESIGN ✨ --- */
+@media (max-width: 768px) {
+    .purchase-container {
+        padding-top: 120px; /* Reduïm espai superior */
+    }
+
+    .content-box {
+        padding: 2rem 1.5rem; /* Menys padding intern */
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .color-showcase h3 {
+        font-size: 1.5rem;
+    }
+    .color-showcase p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-box {
+        padding: 1.5rem 1rem;
+    }
+
+    .color-grid {
+        gap: 20px; /* Menys espai entre cercles */
+    }
+
+    .color-image-wrapper {
+        width: 100px; /* Cercles una mica més petits */
+        height: 100px;
+    }
+
+    .color-label {
+        font-size: 1rem;
+    }
+    
+    .email-button {
+        font-size: 1.1rem;
+        padding: 12px 25px;
     }
 }

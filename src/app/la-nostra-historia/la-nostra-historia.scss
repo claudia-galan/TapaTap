@@ -1,156 +1,12 @@
+/* app/la-nostra-historia/la-nostra-historia.scss */
 :host {
     display: block;
-    background-color: #f9f9f9;
-    min-height: 100vh;
-}
-
-// Contenidor principal de la pàgina per centrar el contingut
-.page-container {
-    max-width: 1300px;
-    font-family: 'Quicksand', sans-serif;
-
-    /* ✨ CORRECCIÓ: Eliminem el padding superior d'aquí per deixar que el contingut pugi */
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-// Layout principal amb Flexbox
-.story-layout {
-    display: flex;
-    gap: 3rem; // Espai entre la columna d'imatges i la de text
-    align-items: flex-start; // Alinea els elements a la part superior
-}
-
-// Columna de les imatges (esquerra)
-.image-column {
-    /* ✨ CORRECCIÓ: Afegim espai superior només aquí */
-    padding-top: 140px; 
-    flex: 0 0 40%; // Ocupa un 40% de l'ample i no creix
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem; // Espai entre les imatges
-}
-
-// Estil per a cada imatge
-.story-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-
-    &:hover {
-        transform: scale(1.03); // Efecte subtil al passar el ratolí
-    }
-}
-
-// Columna del text (dreta)
-.text-column {
-    flex: 1; // Ocupa la resta de l'espai disponible
-    color: #333;
-
-    h2 {
-        /* ✨ CORRECCIÓ: Afegim espai superior al primer element */
-        padding-top: 140px; 
-        font-size: 2.8rem;
-        line-height: 1.2;
-        margin-top: 0;
-        margin-bottom: 1.5rem;
-        color: #ff6600; // Color corporatiu per al títol principal
-    }
-
-    h3 {
-        font-size: 1.8rem;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        color: #444;
-    }
-
-    p {
-        font-size: 1.1rem;
-        line-height: 1.7; // Molt important per a la llegibilitat
-        color: #555;
-        margin-bottom: 1rem;
-    }
-
-    strong {
-        font-weight: 700; // Més pes per a les paraules clau
-    }
-}
-
-// Estils per al botó de crida a l'acció
-.cta-button-container {
-    margin-top: 2.5rem; // Espai superior per separar-lo del text
-    text-align: left; // Alineat a l'esquerra per defecte
-}
-
-.call-to-action {
-    background-color: #ff6600; // Taronja corporatiu
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem; // Una mida adequada per a la pàgina
-    font-family: 'Quicksand', sans-serif;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-    transition: all 0.3s ease;
-
-    &:hover {
-        background-color: #e65c00; // Un to més fosc al passar el ratolí
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    }
-}
-
-
-// --- RESPONSIVE DESIGN ---
-@media (max-width: 992px) {
-    .story-layout {
-        flex-direction: column; // Apilem les columnes una sobre l'altra
-    }
-
-    .image-column, .text-column h2 {
-        /* ✨ CORRECCIÓ: Reduïm l'espaiat en mòbil i el sincronitzem */
-        padding-top: 120px;
-    }
-    
-    .image-column {
-        flex: 1 1 auto;
-        width: 100%;
-        flex-direction: row; 
-        overflow-x: auto;
-        padding-bottom: 1rem;
-    }
-
-    .text-column {
-        h2 { font-size: 2.2rem; }
-        h3 { font-size: 1.6rem; }
-    }
-
-    .cta-button-container {
-        text-align: center;
-    }
-}
-
-@media (max-width: 576px) {
-    .image-column {
-        flex-direction: column;
-    }
-}
-// app/la-nostra-historia/la-nostra-historia.scss
-:host {
-    display: block;
-    background-color: #f5e0c4;
     min-height: 100vh;
 }
 
 .page-container {
     max-width: 1300px;
     font-family: 'Quicksand', sans-serif;
-    /* ✨ CORRECCIÓ: Eliminem el padding superior d'aquí */
     margin: 0 auto;
     padding: 2rem;
 }
@@ -162,21 +18,126 @@
 }
 
 .image-column {
-    /* ✨ CORRECCIÓ: Afegim espai superior només aquí */
     padding-top: 140px; 
     flex: 0 0 40%;
-    /* ... */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.story-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: scale(1.03) translateY(-5px);
+        box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2);
+    }
 }
 
 .text-column {
+    padding-top: 140px; 
+    flex: 1;
+    color: #333;
+
     h2 {
-        /* ✨ CORRECCIÓ: Afegim espai superior al primer element */
-        padding-top: 140px; 
-        /* ... */
+        font-size: 2.8rem;
+        line-height: 1.2;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        color: #ff6600;
     }
-    /* ... */
+
+    h3 {
+        font-size: 1.8rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #444;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    strong {
+        font-weight: 700;
+    }
 }
 
-/* ... La resta d'estils es mantenen ... */
+.cta-button-container {
+    margin-top: 2.5rem;
+    text-align: left;
+}
 
-// Afegeix això a la regla :host de cada fitxer SCSS de pàgina
+.call-to-action {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #e65c00;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+/* --- ✨ RESPONSIVE DESIGN ✨ --- */
+@media (max-width: 992px) {
+    .story-layout {
+        flex-direction: column; /* Apilem les columnes */
+        gap: 2.5rem;
+    }
+
+    .image-column, .text-column {
+        /* ✨ CANVI: Sincronitzem el padding i el reduïm per a mòbil */
+        padding-top: 120px;
+        flex-basis: auto; /* Resetejem la base del flex */
+    }
+
+    .text-column {
+        padding-top: 0; /* El text ja no necessita padding superior */
+    }
+
+    .text-column h2 {
+        font-size: 2.2rem;
+    }
+    .text-column h3 {
+        font-size: 1.6rem;
+    }
+
+    .cta-button-container {
+        text-align: center; /* Centrem el botó en mòbil */
+    }
+}
+
+@media (max-width: 576px) {
+    .page-container {
+        padding: 1rem; /* Menys padding en pantalles molt petites */
+    }
+
+    .text-column h2 {
+        font-size: 1.8rem;
+    }
+    .text-column h3 {
+        font-size: 1.4rem;
+    }
+    .text-column p {
+        font-size: 1rem;
+    }
+}

@@ -1,3 +1,5 @@
+/* app/header/header.scss */
+
 @keyframes logo-jiggle {
   0% { transform: scale(1) rotate(0deg); }
   25% { transform: scale(1.05) rotate(-3deg); }
@@ -14,59 +16,49 @@
     z-index: 1000;
     display: flex;
     align-items: center;
+    justify-content: space-between; /* ✨ CANVI: Espai entre logo i nav/hamburguesa */
     padding: 15px 30px;
     transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
 }
 
-.header-containerA {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    padding: 15px 30px;
-}
-
-/* ✨ ESTIL PER A LA PÀGINA D'INICI ✨ */
+/* Estil per a la pàgina d'inici */
 .home-header {
-    background-color: rgba(0, 0, 0, 0.301);
-    backdrop-filter: blur(2px);
-}
-
-/* ✨ ESTIL PER A LA RESTA DE PÀGINES ✨ */
-.other-page-header {
     background-color: transparent;
     backdrop-filter: none;
 }
 
+/* Estil per a la resta de pàgines */
+.other-page-header {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .logo {
-    width: 100px;
-    height: 100px;
-    background-size: cover;
-    border-radius: 10px;
+    width: 80px; /* ✨ CANVI: Mida ajustada */
+    height: auto;
     cursor: pointer;
     transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1001; /* Assegura que el logo estigui per sobre del menú mòbil */
 
     &:hover {
         animation: logo-jiggle 0.6s ease-in-out;
     }
 }
 
+/* --- Navegació d'Escriptori --- */
 .nav-links {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-left: auto;
 }
 
 .nav-button {
-    display: inline-block;
     padding: 10px 22px;
     background-color: #ff6600;
     color: white;
-    font-family: 'Quicksand', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 1rem;
     font-weight: 700;
     text-decoration: none;
@@ -74,7 +66,6 @@
     border-radius: 50px;
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 
@@ -89,11 +80,126 @@
     background-color: #cc5200;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
     transform: translateY(1px);
+}
 
-    &:hover {
-      background-color: #cc5200;
-      transform: translateY(1px);
+/* --- ✨ NOU: Hamburguesa i Menú Mòbil --- */
+
+.hamburger-button {
+    display: none; /* Ocult per defecte */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger-icon {
+    width: 30px;
+    height: 22px;
+    position: relative;
+
+    span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: rgb(238, 90, 21);
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    span:nth-child(1) { top: 0px; }
+    span:nth-child(2) { top: 9px; }
+    span:nth-child(3) { top: 18px; }
+
+    &.open span:nth-child(1) {
+        top: 9px;
+        transform: rotate(135deg);
+    }
+    &.open span:nth-child(2) {
+        opacity: 0;
+        left: -30px;
+    }
+    &.open span:nth-child(3) {
+        top: 9px;
+        transform: rotate(-135deg);
+    }
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 24, 32, 0.98);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    a {
+        color: white;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: color 0.3s ease, transform 0.4s ease, opacity 0.4s ease;
+
+        &.active {
+            color: #ff6600;
+        }
+    }
+}
+
+/* Afegeix l'animació d'entrada als enllaços quan el menú s'obre */
+.mobile-menu.open .mobile-nav-links a {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Transició esglaonada per a un efecte més elegant */
+@for $i from 1 through 4 {
+    .mobile-menu.open .mobile-nav-links a:nth-child(#{$i}) {
+        transition-delay: #{0.1 + $i * 0.05}s;
     }
 }
 
 
+/* --- ✨ Media Query per a la màgia responsive --- */
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 10px 20px;
+    }
+
+    .desktop-nav {
+        display: none; /* Ocultem la navegació d'escriptori */
+    }
+
+    .hamburger-button {
+        display: block; /* Mostrem el botó d'hamburguesa */
+    }
+
+    .logo {
+        width: 60px; /* Reduïm una mica el logo */
+    }
+}

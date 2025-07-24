@@ -10,43 +10,53 @@ import { filter } from 'rxjs/operators';
   standalone: true,
   imports: [RouterLink, RouterLinkActive, NgFor, NgClass],
   templateUrl: './header.html',
-  styleUrl: './header.scss'
+  styleUrls: ['./header.scss'] // Canviat de styleUrl a styleUrls
 })
 export class Header implements OnInit, OnDestroy {
-  public isHomePage: boolean = true;
   
-  // ✨ CANVI CLAU: Variable per controlar l'estat del menú mòbil ✨
+  // Variable que determina si estem en una pàgina que no sigui la 'home'
+  public isOtherPage: boolean = false;
+  
+  // Variable per controlar l'estat del menú mòbil
   public isMenuOpen: boolean = false;
   
   private routerSubscription!: Subscription;
 
+  // Items de navegació
   navItems = [
     { label: 'Inici', path: '/' },
     { label: 'La Nostra Història', path: '/historia' },
     { label: 'El Producte', path: '/producte' },
     { label: 'Compra Ara', path: '/compra' }
   ];
-  estaAInici: any;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.estaAInici = 
-    (!this.router.url.includes('historia') && !this.router.url.includes('producte')  && !this.router.url.includes('compra') );
+    // Subscripció als esdeveniments de navegació per saber en quina pàgina som
+    this.routerSubscription = this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      // Si la URL després de la redirecció no és '/', estem en una altra pàgina
+      this.isOtherPage = event.urlAfterRedirects !== '/';
+      // Assegurem que el menú es tanqui en canviar de ruta
+      this.closeMenu();
+    });
   }
 
   ngOnDestroy(): void {
+    // Desfem la subscripció per evitar fuites de memòria
     if (this.routerSubscription) {
       this.routerSubscription.unsubscribe();
     }
   }
 
-
+  // Funció per obrir/tancar el menú mòbil
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-
+  // Funció per tancar el menú mòbil (útil per als enllaços)
   closeMenu(): void {
     this.isMenuOpen = false;
   }
